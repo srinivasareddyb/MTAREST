@@ -1,0 +1,27 @@
+specVersion: "2.4"
+metadata:
+  name: ui5
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /V2
+            url: https://services.odata.org
+          - path: /sap
+            url: https://services.odata.org
+            scp: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+          version: null
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp

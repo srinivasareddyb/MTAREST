@@ -1,0 +1,42 @@
+<mvc:View
+    controllerName="rest.ui5.com.ui5.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m">
+<Page>
+  <customHeader>
+    <Bar>
+      <contentMiddle>
+          <Title text = "{i18n>Products}"></Title>
+      </contentMiddle>
+    </Bar> 
+ </customHeader>
+ <content>
+ <Table id = "idTable" mode="SingleSelectMaster" items = "{path :'/results'}"  >
+    <columns>
+       <Column hAlign="Center" minScreenWidth="Phone" popinDisplay="Inline">
+         <Text text = "{i18n>id}"/> 
+       </Column>
+       <Column  hAlign="Center" minScreenWidth="Phone" popinDisplay="Inline" >
+        <Text text = "{i18n>Cat}"/>
+       </Column>
+    </columns> 
+    <items>
+      <ColumnListItem >
+        <cells>
+        <ObjectIdentifier title="{ID}"></ObjectIdentifier>        
+          <Text text = "{Name}"></Text>
+        </cells>
+      </ColumnListItem>
+    </items>
+ </Table>
+ </content>
+ <footer>
+ <OverflowToolbar >
+   <ToolbarSpacer/>
+   <Button type="Accept" press="onCreate"  text="{i18n>Create}"/>
+   <Button type ="Reject" press="onDelete" text="{i18n>Delete}"/>
+ </OverflowToolbar>
+ </footer>
+</Page>
+</mvc:View>
